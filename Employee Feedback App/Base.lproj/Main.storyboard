@@ -121,11 +121,11 @@
         <scene sceneID="Nfg-k9-Cp6">
             <objects>
                 <viewController storyboardIdentifier="SignUp" id="SK3-Qr-d0K" customClass="SignUpViewController" customModule="Employee_Feedback_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="9GH-uO-NJJ">
+                    <view key="view" contentMode="scaleToFill" id="9GH-uO-NJJ">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UEf-8X-c0t">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UEf-8X-c0t">
                                 <rect key="frame" x="40" y="188" width="348" height="504"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNe-xm-51T">
@@ -202,14 +202,14 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L7A-Al-3aC">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7A-Al-3aC">
                                         <rect key="frame" x="0.0" y="331.33333333333337" width="348" height="142.66666666666663"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="37v-on-uW8"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ft7-Gz-MEa">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ft7-Gz-MEa">
                                         <rect key="frame" x="0.0" y="474" width="348" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="348" id="RCl-4k-uIp"/>
@@ -255,10 +255,10 @@
             </objects>
             <point key="canvasLocation" x="4499" y="87"/>
         </scene>
-        <!--Item-->
+        <!--Employee List-->
         <scene sceneID="f4A-ug-Hwr">
             <objects>
-                <tableViewController storyboardIdentifier="EmployeeList" id="4dP-SL-nHC" customClass="HomeViewController" customModule="Employee_Feedback_App" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="EmployeeList" title="Employee List" id="4dP-SL-nHC" customClass="HomeViewController" customModule="Employee_Feedback_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="tP4-vE-r1i">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -292,8 +292,8 @@
                             <outlet property="delegate" destination="4dP-SL-nHC" id="BCI-kt-3wR"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="loB-VI-anB"/>
-                    <navigationItem key="navigationItem" id="7pd-8f-of9"/>
+                    <tabBarItem key="tabBarItem" title="Employee List" id="loB-VI-anB"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="7pd-8f-of9"/>
                     <connections>
                         <outlet property="searchBar" destination="7VT-pv-xxJ" id="0iO-Z9-Cf6"/>
                     </connections>
@@ -302,17 +302,17 @@
             </objects>
             <point key="canvasLocation" x="5320" y="87"/>
         </scene>
-        <!--Item-->
+        <!--Profile-->
         <scene sceneID="ZjO-S2-TyU">
             <objects>
-                <viewController storyboardIdentifier="Profile" id="jbI-la-u2z" customClass="ProfileViewController" customModule="Employee_Feedback_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Profile" title="Profile" id="jbI-la-u2z" customClass="ProfileViewController" customModule="Employee_Feedback_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zSi-Yl-8lr">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="9FU-fA-c4u"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="KOn-eH-fYW"/>
+                    <tabBarItem key="tabBarItem" title="Profile" id="KOn-eH-fYW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="erp-s5-cMM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

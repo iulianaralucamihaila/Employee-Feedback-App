@@ -18,7 +18,6 @@ class HomeViewController: UITableViewController {
         super.viewDidLoad()
         
         title = "Employee List"
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
