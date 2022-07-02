@@ -1,16 +1,9 @@
-//
-//  ViewController.swift
-//  Employee Feedback App
-//
-//  Created by Mobile Academy on 19.06.2022.
-//
-
 import UIKit
 
-class HomeViewController: UITableViewController {
-    var users = ["Ana", "Maria", "Cosmin", "Mihai", "Andreea", "Miruna", "Anca", "Vlad"]
+class HomeViewController: UITableViewController, UISearchBarDelegate {
     
-    var filtredUsers = [String]()
+    let users = ["Ana", "Maria", "Cosmin", "Mihai", "Andreea", "Miruna", "Anca", "VladVladVladVladVladVlad"]
+    var filtredUsers: [String]!
     
     @IBOutlet var searchBar: UISearchBar!
     
@@ -18,15 +11,33 @@ class HomeViewController: UITableViewController {
         super.viewDidLoad()
         
         title = "Employee List"
+        
+        filtredUsers = users
+        
+        //url session
+//        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else { return }
+//        let session = URLSession.shared.dataTask(with: url) {
+//            data, response, error in
+//            if let error = error {
+//                print("error: \(error.localizedDescription)")
+//            } else {
+//                let jsonRes = try? JSONSerialization.jsonObject(with: data!, options: [])
+//                print(jsonRes)
+//            }
+//        }.resume()
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        return filtredUsers.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
-        cell.textLabel?.text = users[indexPath.row]
+        cell.textLabel?.text = filtredUsers[indexPath.row]
         return cell
     }
     
@@ -35,6 +46,23 @@ class HomeViewController: UITableViewController {
             vc.selectedUser = users[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    // Search bar
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filtredUsers = []
+        
+        if searchText == ""{
+           filtredUsers = users
+        }
+        else {
+        for user in users {
+            if user.lowercased().contains(searchText.lowercased()) {
+                filtredUsers.append(user)
+            }
+        }
+        }
+        self.tableView.reloadData()
     }
 }
 

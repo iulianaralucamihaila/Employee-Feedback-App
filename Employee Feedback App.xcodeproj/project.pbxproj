@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		923DF99A2864D9E50035D1F6 /* SendFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923DF9992864D9E50035D1F6 /* SendFeedbackViewController.swift */; };
+		9241EC562870C70300148051 /* ProfileFeedbackDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9241EC552870C70300148051 /* ProfileFeedbackDetailViewController.swift */; };
+		9288E29D286DC619009B8F2B /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9288E29C286DC619009B8F2B /* WebService.swift */; };
+		9292043428631CB20075DACC /* ProfileFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9292043328631CB20075DACC /* ProfileFeedbackViewController.swift */; };
 		92B15FA2285F55A900B9513C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B15FA1285F55A900B9513C /* AppDelegate.swift */; };
 		92B15FA4285F55A900B9513C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B15FA3285F55A900B9513C /* SceneDelegate.swift */; };
 		92B15FA6285F55A900B9513C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B15FA5285F55A900B9513C /* HomeViewController.swift */; };
@@ -17,9 +21,16 @@
 		92B15FCD2860882800B9513C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B15FCC2860882800B9513C /* LoginViewController.swift */; };
 		92B15FCF28608E2C00B9513C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B15FCE28608E2C00B9513C /* SignUpViewController.swift */; };
 		92B15FD22860A74F00B9513C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B15FD12860A74F00B9513C /* ProfileViewController.swift */; };
+		92E43D772869B52300863B65 /* OldFeedbacksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E43D762869B52300863B65 /* OldFeedbacksViewController.swift */; };
+		92E43D792869B7FA00863B65 /* FeedbackDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E43D782869B7FA00863B65 /* FeedbackDetailViewController.swift */; };
+		92E43D7B2869BF7200863B65 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E43D7A2869BF7100863B65 /* EditProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		923DF9992864D9E50035D1F6 /* SendFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendFeedbackViewController.swift; sourceTree = "<group>"; };
+		9241EC552870C70300148051 /* ProfileFeedbackDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFeedbackDetailViewController.swift; sourceTree = "<group>"; };
+		9288E29C286DC619009B8F2B /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		9292043328631CB20075DACC /* ProfileFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFeedbackViewController.swift; sourceTree = "<group>"; };
 		92B15F9E285F55A900B9513C /* Employee Feedback App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Employee Feedback App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		92B15FA1285F55A900B9513C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92B15FA3285F55A900B9513C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +43,9 @@
 		92B15FCC2860882800B9513C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		92B15FCE28608E2C00B9513C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		92B15FD12860A74F00B9513C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		92E43D762869B52300863B65 /* OldFeedbacksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldFeedbacksViewController.swift; sourceTree = "<group>"; };
+		92E43D782869B7FA00863B65 /* FeedbackDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackDetailViewController.swift; sourceTree = "<group>"; };
+		92E43D7A2869BF7100863B65 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9288E29B286DC5EB009B8F2B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9288E29C286DC619009B8F2B /* WebService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		92B15F95285F55A900B9513C = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +86,7 @@
 		92B15FA0285F55A900B9513C /* Employee Feedback App */ = {
 			isa = PBXGroup;
 			children = (
+				9288E29B286DC5EB009B8F2B /* Services */,
 				92B15FD0286098F800B9513C /* ViewControllers */,
 				92B15FA1285F55A900B9513C /* AppDelegate.swift */,
 				92B15FA3285F55A900B9513C /* SceneDelegate.swift */,
@@ -83,6 +106,12 @@
 				92B15FCC2860882800B9513C /* LoginViewController.swift */,
 				92B15FCE28608E2C00B9513C /* SignUpViewController.swift */,
 				92B15FD12860A74F00B9513C /* ProfileViewController.swift */,
+				9292043328631CB20075DACC /* ProfileFeedbackViewController.swift */,
+				923DF9992864D9E50035D1F6 /* SendFeedbackViewController.swift */,
+				92E43D762869B52300863B65 /* OldFeedbacksViewController.swift */,
+				92E43D782869B7FA00863B65 /* FeedbackDetailViewController.swift */,
+				92E43D7A2869BF7100863B65 /* EditProfileViewController.swift */,
+				9241EC552870C70300148051 /* ProfileFeedbackDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -158,11 +187,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9288E29D286DC619009B8F2B /* WebService.swift in Sources */,
 				92B15FCF28608E2C00B9513C /* SignUpViewController.swift in Sources */,
+				923DF99A2864D9E50035D1F6 /* SendFeedbackViewController.swift in Sources */,
 				92B15FA6285F55A900B9513C /* HomeViewController.swift in Sources */,
 				92B15FA2285F55A900B9513C /* AppDelegate.swift in Sources */,
+				92E43D772869B52300863B65 /* OldFeedbacksViewController.swift in Sources */,
+				9292043428631CB20075DACC /* ProfileFeedbackViewController.swift in Sources */,
 				92B15FA4285F55A900B9513C /* SceneDelegate.swift in Sources */,
 				92B15FD22860A74F00B9513C /* ProfileViewController.swift in Sources */,
+				92E43D7B2869BF7200863B65 /* EditProfileViewController.swift in Sources */,
+				9241EC562870C70300148051 /* ProfileFeedbackDetailViewController.swift in Sources */,
+				92E43D792869B7FA00863B65 /* FeedbackDetailViewController.swift in Sources */,
 				92B15FCD2860882800B9513C /* LoginViewController.swift in Sources */,
 				92B15FCB2860537B00B9513C /* DetailViewController.swift in Sources */,
 			);

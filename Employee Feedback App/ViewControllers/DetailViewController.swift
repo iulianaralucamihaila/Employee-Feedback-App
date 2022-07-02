@@ -1,16 +1,13 @@
-//
-//  DetailViewController.swift
-//  Employee Feedback App
-//
-//  Created by Mobile Academy on 20.06.2022.
-//
-
 import UIKit
 
 class DetailViewController: UIViewController {
 //    @IBOutlet var imageView: UIImageView!
     var selectedUser: String?
     
+    @IBOutlet var viewOldFeedbacks: UIButton!
+    @IBOutlet var addFeedback: UIButton!
+    @IBOutlet var biography: UILabel!
+    @IBOutlet var profilePic: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
