@@ -12,7 +12,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         title = selectedUser
-        navigationItem.largeTitleDisplayMode = .never
+//        navigationItem.largeTitleDisplayMode = .never
 
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
 //
