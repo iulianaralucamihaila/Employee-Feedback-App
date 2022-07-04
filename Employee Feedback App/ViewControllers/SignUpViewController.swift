@@ -64,7 +64,7 @@ class SignUpViewController: UIViewController {
         request.httpMethod = "POST"
         
         request.allHTTPHeaderFields = ["Content-Type": "multipart/formdata"]
-        request.allHTTPHeaderFields = ["Accept": "application/json"]
+        request.allHTTPHeaderFields = ["accept": "application/json"]
         
         let registerRequest = ["data": ["emailAddress": emailField.text!,
                                         "password": passwordField.text!,
@@ -85,16 +85,16 @@ class SignUpViewController: UIViewController {
             
             //            self.removeActivityIndicator(activityIndicator: myActivityIndicator)
             guard let data = data, error == nil else {
-                print("error=\(error)")
+                print("error=\(String(describing: error))")
                 return
             }
             
             let httpStatus = response as? HTTPURLResponse
             print("statusCode should be 200, but is \(httpStatus!.statusCode)")
-            print("response = \(response)")
+            print("response = \(String(describing: response))")
             
             let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
+            print("responseString = \(String(describing: responseString))")
             
         }
         task.resume()

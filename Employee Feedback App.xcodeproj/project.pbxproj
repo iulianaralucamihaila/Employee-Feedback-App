@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		923DF99A2864D9E50035D1F6 /* SendFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923DF9992864D9E50035D1F6 /* SendFeedbackViewController.swift */; };
 		9241EC562870C70300148051 /* ProfileFeedbackDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9241EC552870C70300148051 /* ProfileFeedbackDetailViewController.swift */; };
-		9288E29D286DC619009B8F2B /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9288E29C286DC619009B8F2B /* WebService.swift */; };
+		92871D202872C6FD00B3F223 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92871D1F2872C6FD00B3F223 /* NetworkingService.swift */; };
+		92871D232872E9B700B3F223 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 92871D222872E9B700B3F223 /* SwiftKeychainWrapper */; };
 		9292043428631CB20075DACC /* ProfileFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9292043328631CB20075DACC /* ProfileFeedbackViewController.swift */; };
 		92B15FA2285F55A900B9513C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B15FA1285F55A900B9513C /* AppDelegate.swift */; };
 		92B15FA4285F55A900B9513C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B15FA3285F55A900B9513C /* SceneDelegate.swift */; };
@@ -29,7 +30,7 @@
 /* Begin PBXFileReference section */
 		923DF9992864D9E50035D1F6 /* SendFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendFeedbackViewController.swift; sourceTree = "<group>"; };
 		9241EC552870C70300148051 /* ProfileFeedbackDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFeedbackDetailViewController.swift; sourceTree = "<group>"; };
-		9288E29C286DC619009B8F2B /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		92871D1F2872C6FD00B3F223 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		9292043328631CB20075DACC /* ProfileFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFeedbackViewController.swift; sourceTree = "<group>"; };
 		92B15F9E285F55A900B9513C /* Employee Feedback App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Employee Feedback App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		92B15FA1285F55A900B9513C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92871D232872E9B700B3F223 /* SwiftKeychainWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +64,7 @@
 		9288E29B286DC5EB009B8F2B /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				9288E29C286DC619009B8F2B /* WebService.swift */,
+				92871D1F2872C6FD00B3F223 /* NetworkingService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -132,6 +134,9 @@
 			dependencies = (
 			);
 			name = "Employee Feedback App";
+			packageProductDependencies = (
+				92871D222872E9B700B3F223 /* SwiftKeychainWrapper */,
+			);
 			productName = "Employee Feedback App";
 			productReference = 92B15F9E285F55A900B9513C /* Employee Feedback App.app */;
 			productType = "com.apple.product-type.application";
@@ -160,6 +165,9 @@
 				Base,
 			);
 			mainGroup = 92B15F95285F55A900B9513C;
+			packageReferences = (
+				92871D212872E9B700B3F223 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+			);
 			productRefGroup = 92B15F9F285F55A900B9513C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -187,7 +195,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9288E29D286DC619009B8F2B /* WebService.swift in Sources */,
 				92B15FCF28608E2C00B9513C /* SignUpViewController.swift in Sources */,
 				923DF99A2864D9E50035D1F6 /* SendFeedbackViewController.swift in Sources */,
 				92B15FA6285F55A900B9513C /* HomeViewController.swift in Sources */,
@@ -197,6 +204,7 @@
 				92B15FA4285F55A900B9513C /* SceneDelegate.swift in Sources */,
 				92B15FD22860A74F00B9513C /* ProfileViewController.swift in Sources */,
 				92E43D7B2869BF7200863B65 /* EditProfileViewController.swift in Sources */,
+				92871D202872C6FD00B3F223 /* NetworkingService.swift in Sources */,
 				9241EC562870C70300148051 /* ProfileFeedbackDetailViewController.swift in Sources */,
 				92E43D792869B7FA00863B65 /* FeedbackDetailViewController.swift in Sources */,
 				92B15FCD2860882800B9513C /* LoginViewController.swift in Sources */,
@@ -416,6 +424,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		92871D212872E9B700B3F223 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		92871D222872E9B700B3F223 /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 92871D212872E9B700B3F223 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 92B15F96285F55A900B9513C /* Project object */;
 }

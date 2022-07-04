@@ -1,4 +1,5 @@
 import UIKit
+import SwiftKeychainWrapper
 
 class ProfileViewController: UIViewController {
     
@@ -26,7 +27,19 @@ class ProfileViewController: UIViewController {
         title = nil
     }
     
+    func loadMemberProfile() {
+        let accesToken: String? = KeychainWrapper.standard.string(forKey: "accessToken")
+        let userId: String? = KeychainWrapper.standard.string(forKey: "userId")
+    }
+    
     @IBAction func signOutButtonTapped(_ sender: Any) {
         print("Log out button tapped.")
+        KeychainWrapper.standard.removeObject(forKey: "accessToken")
+        
+        let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+        let appDelegate = UIApplication.shared.delegate
+        appDelegate?.window??.rootViewController = signInPage
+        //performSegue(withIdentifier: "SignOutSegue", sender: self)
+        
     }
 }

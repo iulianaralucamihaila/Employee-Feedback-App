@@ -1,7 +1,7 @@
 import UIKit
 
 class ProfileFeedbackViewController: UITableViewController {
-    let feedbacks = ["Feedback 1", "Feedback 2", "Feedback 3", "Feedback 4", "Feedback 5", "Feedback 6", "Feedback 7", "Feedback 8"]
+    let feedbacks = ["Feedback 1Feedback 1Feedback 1Feedback 1Feedback 1Feedback 1Feedback 1Feedback 1Feedback 1Feedback 1Feedback 1Feedback 1", "Feedback 2FeedbackFeedbackFeedbackFeedbackFeedbackFeedbackFeedbackFeedbackFeedbackFeedbackFeedbackFeedback", "Feedback 3", "Feedback 4", "Feedback 5", "Feedback 6", "Feedback 7", "Feedback 8"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +19,11 @@ class ProfileFeedbackViewController: UITableViewController {
             return cell
         }
         
-        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            if let vc = storyboard?.instantiateViewController(withIdentifier: "Profile Feedback Detail") as? ProfileFeedbackDetailViewController {
-                vc.selectedFeedback = feedbacks[indexPath.row]
-                navigationController?.pushViewController(vc, animated: true)
-            }
-        }
+//        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//            if let vc = storyboard?.instantiateViewController(withIdentifier: "Profile Feedback Detail") as? ProfileFeedbackDetailViewController {
+//                vc.selectedFeedback = feedbacks[indexPath.row]
+//                navigationController?.pushViewController(vc, animated: true)
+//            }
+//        }
 
 }
