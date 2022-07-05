@@ -57,9 +57,6 @@ class LoginViewController: UIViewController {
         myActivityIndicator.startAnimating()
         
         view.addSubview(myActivityIndicator)
-        
-        
-        
     }
     
     func makeLoginCall() {

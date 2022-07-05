@@ -13,19 +13,17 @@ class ProfileViewController: UIViewController {
     @IBOutlet var editProfile: UIButton!
     @IBOutlet var viewFeedbacks: UIButton!
     @IBOutlet var logoutBtn: UITabBarItem!
+    
+    var user = User(emailAdress: "maria@db.com", password: "1234", firstName: "Maria", lastName: "Popescu", resiliance: 4.5, performance: 5, innovation: 3.7, biography: "iOS developper")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Profile"
         getUser()
     }
 
-    
     func loadMemberProfile() {
-//        let accesToken: String? = KeychainWrapper.standard.string(forKey: "accessToken")
-//        let userId: String? = KeychainWrapper.standard.string(forKey: "userId")
     }
-    
-    var user = User(emailAdress: "maria@db.com", password: "1234", firstName: "Maria", lastName: "Popescu", resiliance: 4.5, performance: 5, innovation: 3.7, biography: "iOS developper")
     
     func getUser() {
         firstNameLabel.text = user.firstName
@@ -36,7 +34,6 @@ class ProfileViewController: UIViewController {
         biographyLabel.text = user.biography
     }
     
-    
     @IBAction func signOutButtonTapped(_ sender: Any) {
         print("Log out button tapped.")
         KeychainWrapper.standard.removeObject(forKey: "accessToken")
@@ -45,6 +42,5 @@ class ProfileViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate
         appDelegate?.window??.rootViewController = signInPage
         //performSegue(withIdentifier: "SignOutSegue", sender: self)
-        
     }
 }
