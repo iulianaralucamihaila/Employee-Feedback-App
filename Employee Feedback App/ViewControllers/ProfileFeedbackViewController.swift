@@ -1,29 +1,37 @@
 import UIKit
 
 class ProfileFeedbackViewController: UITableViewController {
-    let feedbacks = ["Feedback 1Feedback 1Feedback 1Feedback 1Feedback 1Feedback 1Feedback 1Feedback 1Feedback 1Feedback 1Feedback 1Feedback 1", "Feedback 2FeedbackFeedbackFeedbackFeedbackFeedbackFeedbackFeedbackFeedbackFeedbackFeedbackFeedbackFeedback", "Feedback 3", "Feedback 4", "Feedback 5", "Feedback 6", "Feedback 7", "Feedback 8"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         title = "Feedback List"
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return feedbacks.count
-        }
+        return feedbacks.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Profile Feedback", for: indexPath)
+        return cell
+    }
+    
+    var feedback1 = Feedback(userName: "", averageScore: 4.3, comments: "")
+    var feedback2 = Feedback(userName: "", averageScore: 5.0, comments: "")
+    var feedback3 = Feedback(userName: "", averageScore: 4.1, comments: "")
+    var feedback4 = Feedback(userName: "", averageScore: 3.0, comments: "")
+    var feedback5 = Feedback(userName: "", averageScore: 5.7, comments: "")
+    var feedback6 = Feedback(userName: "", averageScore: 4.3, comments: "")
+    
+    var feedbacks = [Feedback]()
+    
+    func createFeedbacks() {
+        feedbacks = [feedback1, feedback2, feedback3, feedback4, feedback5, feedback6]
         
-        override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Profile Feedback List", for: indexPath)
-            cell.textLabel?.text = feedbacks[indexPath.row]
-            return cell
+        for _ in 0 ..< feedbacks.count {
+            var cell: ProfileFeedbackTableViewCell
+            cell.userName = 
         }
-        
-//        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//            if let vc = storyboard?.instantiateViewController(withIdentifier: "Profile Feedback Detail") as? ProfileFeedbackDetailViewController {
-//                vc.selectedFeedback = feedbacks[indexPath.row]
-//                navigationController?.pushViewController(vc, animated: true)
-//            }
-//        }
-
+    }
 }

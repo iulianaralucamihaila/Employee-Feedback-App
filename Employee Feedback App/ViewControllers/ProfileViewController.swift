@@ -15,22 +15,27 @@ class ProfileViewController: UIViewController {
     @IBOutlet var logoutBtn: UITabBarItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Profile"
+        getUser()
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        title = "Profile"
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        title = nil
-    }
+
     
     func loadMemberProfile() {
-        let accesToken: String? = KeychainWrapper.standard.string(forKey: "accessToken")
-        let userId: String? = KeychainWrapper.standard.string(forKey: "userId")
+//        let accesToken: String? = KeychainWrapper.standard.string(forKey: "accessToken")
+//        let userId: String? = KeychainWrapper.standard.string(forKey: "userId")
     }
+    
+    var user = User(emailAdress: "maria@db.com", password: "1234", firstName: "Maria", lastName: "Popescu", resiliance: 4.5, performance: 5, innovation: 3.7, biography: "iOS developper")
+    
+    func getUser() {
+        firstNameLabel.text = user.firstName
+        lastNameLabel.text = user.lastName
+        resilianceLabel.text = String(user.resiliance)
+        performanceLabel.text = String(user.performance)
+        innovationLabel.text = String(user.innovation)
+        biographyLabel.text = user.biography
+    }
+    
     
     @IBAction func signOutButtonTapped(_ sender: Any) {
         print("Log out button tapped.")

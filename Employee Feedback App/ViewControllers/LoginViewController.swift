@@ -16,6 +16,8 @@ class LoginViewController: UIViewController {
     @IBOutlet var signinBtn: UIButton!
     @IBOutlet var signUpButton: UIButton!
     
+    var myActivityIndicator = UIActivityIndicatorView()
+    
     
     
     override func viewDidLoad() {
@@ -43,7 +45,7 @@ class LoginViewController: UIViewController {
     
     func showActivityIndicator() {
         // Create activity indicator
-        let myActivityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        myActivityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
         
         // Position Activity Indicator in the center of the main view
         myActivityIndicator.center = view.center
@@ -55,6 +57,9 @@ class LoginViewController: UIViewController {
         myActivityIndicator.startAnimating()
         
         view.addSubview(myActivityIndicator)
+        
+        
+        
     }
     
     func makeLoginCall() {
@@ -62,7 +67,7 @@ class LoginViewController: UIViewController {
         let task = URLSession.shared.dataTask(with: getULRRequest()) { (data: Data?, response: URLResponse?, error: Error?) in
             
             guard let data = data else {
-                self.removeActivityIndicator(activityIndicator: myActivityIndicator)
+                self.removeActivityIndicator(activityIndicator: self.myActivityIndicator)
                 self.displayMessage(userMessage: "not successfully")
                 return
             }
@@ -78,7 +83,7 @@ class LoginViewController: UIViewController {
                     appDelegate?.window??.rootViewController = homePage
                 }
             } catch {
-                self.removeActivityIndicator(activityIndicator: myActivityIndicator)
+                self.removeActivityIndicator(activityIndicator: self.myActivityIndicator)
                 self.displayMessage(userMessage: "not successfully")
                 print(error)
             }
@@ -95,7 +100,6 @@ class LoginViewController: UIViewController {
         
         let jsonEncoder = JSONEncoder()
         request.httpBody = try? jsonEncoder.encode(getLoginRequest())
-        
         return request
     }
     

@@ -2,8 +2,30 @@ import UIKit
 
 class HomeViewController: UITableViewController, UISearchBarDelegate {
     
-    let users = ["Ana", "Maria", "Cosmin", "Mihai", "Andreea", "Miruna", "Anca", "VladVladVladVladVladVlad"]
-    var filtredUsers: [String]
+    var user1 = User(emailAdress: "maria@db.com", password: "1234", firstName: "Anca", lastName: "Ionescu", resiliance: 4.5, performance: 5, innovation: 4.7, biography: "Full-stack Developper")
+    
+    var user2 = User(emailAdress: "sebastian@db.com", password: "1234", firstName: "Sebastian", lastName: "Dumitrescu", resiliance: 3.7, performance: 4, innovation: 4.2, biography: "Junior Java Developper")
+    
+    var user3 = User(emailAdress: "alexandra@db.com", password: "1234", firstName: "Alexandra", lastName: "Badea", resiliance: 5, performance: 5, innovation: 4.5, biography: "Phyton Developper")
+    
+    var user4 = User(emailAdress: "anton@db.com", password: "1234", firstName: "Anton", lastName: "Stan", resiliance: 3.8, performance: 5, innovation: 4.7, biography: "PHP Developper")
+    
+    var user5 = User(emailAdress: "cosmin@db.com", password: "1234", firstName: "Cosmin", lastName: "Andone", resiliance: 4.8, performance: 4.8, innovation: 4.1, biography: ".NET Developper")
+    
+    var user6 = User(emailAdress: "nicoleta@db.com", password: "1234", firstName: "Nicoleta", lastName: "Tudose", resiliance: 3.5, performance: 3, innovation: 3, biography: "Junior Phyton Developper")
+    
+    var users = [User]()
+    var usersFullName = [String]()
+    
+    func createUsers() {
+        users = [user1, user2, user3, user4, user5, user6]
+        for i in 0 ..< users.count {
+            usersFullName.append(users[i].firstName + " " + users[i].lastName)
+        }
+    }
+    
+    //fara !
+    var filtredUsers: [String]!
     
     var fetchedProfiles: [String]!
     
@@ -16,54 +38,43 @@ class HomeViewController: UITableViewController, UISearchBarDelegate {
         title = "Employee List"
         
         profileTableView.dataSource = self
-        
-        filtredUsers = users
-        
-      //  parseData()
-
+        createUsers()
+        filtredUsers = usersFullName
     }
     
     //url
     func parseData() {
         fetchedProfiles = []
-
+        
         var request = URLRequest(url: URL(string: "https://efa-app.ml/mock/profiles")!)
-                request.httpMethod = "GET"
-                request.allHTTPHeaderFields = ["Accept": "application/json"]
-                //request.allHTTPHeaderFields = []
-                //request.setValue(<#T##value: String?##String?#>, forHTTPHeaderField: <#T##String#>)
-
-
-
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = ["Accept": "application/json"]
+        //request.allHTTPHeaderFields = []
+        //request.setValue(<#T##value: String?##String?#>, forHTTPHeaderField: <#T##String#>)
+        
         let task = URLSession.shared.dataTask(with: request) {
-                    data, response, error in
-                    if let error = error {
-                        print("error: \(error.localizedDescription)")
-                    } else {
-                        let jsonRes = try? JSONSerialization.jsonObject(with: data!, options: [])
-
-                        for eachFetchedProfiles in self.fetchedProfiles {
-                            let eachProfiles = eachFetchedProfiles as! [String : Any]
-                            let title = eachProfiles["title"] as! String
-                            // let body = eachProfiles["body"] as! String
-
-                            self.fetchedProfiles.append(title)
-                        }
-                        DispatchQueue.main.async {
-                            self.profileTableView.reloadData()
-                        }
-                        //self.profileTableView.reloadData()
-                        //print(self.fetchedProfiles)
-
-                        // UserDefaults.standars.addObject()
-                        print(jsonRes)
-                    }
-                }.resume()
+            data, response, error in
+            if let error = error {
+                print("error: \(error.localizedDescription)")
+            } else {
+                let jsonRes = try? JSONSerialization.jsonObject(with: data!, options: [])
+                
+                for eachFetchedProfiles in self.fetchedProfiles {
+                    let eachProfiles = eachFetchedProfiles as! [String : Any]
+                    let title = eachProfiles["title"] as! String
+                    // let body = eachProfiles["body"] as! String
+                    
+                    self.fetchedProfiles.append(title)
+                }
+                DispatchQueue.main.async {
+                    self.profileTableView.reloadData()
+                }
+                print(jsonRes)
+            }
+        }.resume()
     }
-
     
-    
-    //table
+    // Table
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -75,7 +86,6 @@ class HomeViewController: UITableViewController, UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
         cell.textLabel?.text = filtredUsers[indexPath.row]
-        //cell.detailTextLabel?.text = fetchedProfiles[indexPath.row].body
         return cell
     }
     
@@ -89,27 +99,17 @@ class HomeViewController: UITableViewController, UISearchBarDelegate {
     // Search bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filtredUsers = []
-
-        if searchText == ""{
-           filtredUsers = users
+        
+        if searchText == "" {
+            filtredUsers = usersFullName
         }
         else {
-        for user in users {
-            if user.lowercased().contains(searchText.lowercased()) {
-                filtredUsers.append(user)
+            for user in usersFullName {
+                if user.lowercased().contains(searchText.lowercased()) {
+                    filtredUsers.append(user)
+                }
             }
-        }
         }
         self.tableView.reloadData()
     }
 }
-
-//class Profiles {
-//    var title : String
-//    //var body : String
-//
-//    init(title : String) {
-//        self.title = title
-//        //self.body = body
-//    }
-//}

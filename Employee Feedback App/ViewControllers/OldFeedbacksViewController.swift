@@ -16,26 +16,9 @@ class OldFeedbacksViewController: UITableViewController {
         
         override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Feedback List", for: indexPath)
-//            cell.textLabel?.text = feedbacks[indexPath.row]
             return cell
         }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("aici")
     }
-    
-//    override func tableView(_ tableView: UITableView, heightForRow indexPath: IndexPath) -> CGFloat {
-//        if indexPath.row == 0 {
-//            return 80
-//        }
-//
-//        return UITableView.automaticDimension
-//    }
-        
-//        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//            if let vc = storyboard?.instantiateViewController(withIdentifier: "Feedback details") as? FeedbackDetailViewController {
-//                vc.selectedFeedback = feedbacks[indexPath.row]
-//                navigationController?.pushViewController(vc, animated: true)
-//            }
-//        }
-
 }
