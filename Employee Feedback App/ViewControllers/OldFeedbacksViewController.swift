@@ -17,23 +17,23 @@ class OldFeedbacksViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         title = "Feedback List"
         
         createFeedbacks()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return feedbacks.count
-        }
-        
-        override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Feedback List", for: indexPath) as! EmployeeFeedbackTableViewCell
-            let currentfFeedback = feedbacks[indexPath.row]
-            cell.averageScore?.text = String(currentfFeedback.averageScore)
-            cell.commentLabel?.text = currentfFeedback.comments
-            return cell
-        }
+        return feedbacks.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Feedback List", for: indexPath) as! EmployeeFeedbackTableViewCell
+        let currentfFeedback = feedbacks[indexPath.row]
+        cell.averageScore?.text = String(currentfFeedback.averageScore)
+        cell.commentLabel?.text = currentfFeedback.comments
+        return cell
+    }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("aici")
     }

@@ -2,6 +2,9 @@ import UIKit
 
 class ProfileFeedbackViewController: UITableViewController {
     
+    //@IBOutlet var spinner: UIActivityIndicatorView!
+    
+    
     var feedback1 = Feedback(userName: "Maria", averageScore: 4.3, comments: "Improve your punctuality")
     var feedback2 = Feedback(userName: "Florin", averageScore: 5.0, comments: "I appreciate your coordination skill")
     var feedback3 = Feedback(userName: "Mihai", averageScore: 4.1, comments: "Communicate more with team members!")
@@ -19,6 +22,7 @@ class ProfileFeedbackViewController: UITableViewController {
         super.viewDidLoad()
         
         title = "Feedback List"
+        
         createFeedbacks()
     }
     

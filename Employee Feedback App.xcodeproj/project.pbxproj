@@ -15,6 +15,8 @@
 		929781142874670C002C26AD /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929781132874670C002C26AD /* Feedback.swift */; };
 		9297811728746B38002C26AD /* ProfileFeedbackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9297811628746B38002C26AD /* ProfileFeedbackTableViewCell.swift */; };
 		929781192874C12E002C26AD /* EmployeeFeedbackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929781182874C12E002C26AD /* EmployeeFeedbackTableViewCell.swift */; };
+		9297811F28759FC9002C26AD /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9297811E28759FC9002C26AD /* LoginService.swift */; };
+		929781212875AB29002C26AD /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929781202875AB29002C26AD /* SignUpService.swift */; };
 		92B15FA2285F55A900B9513C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B15FA1285F55A900B9513C /* AppDelegate.swift */; };
 		92B15FA4285F55A900B9513C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B15FA3285F55A900B9513C /* SceneDelegate.swift */; };
 		92B15FA6285F55A900B9513C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B15FA5285F55A900B9513C /* HomeViewController.swift */; };
@@ -37,6 +39,8 @@
 		929781132874670C002C26AD /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		9297811628746B38002C26AD /* ProfileFeedbackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFeedbackTableViewCell.swift; sourceTree = "<group>"; };
 		929781182874C12E002C26AD /* EmployeeFeedbackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeFeedbackTableViewCell.swift; sourceTree = "<group>"; };
+		9297811E28759FC9002C26AD /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		929781202875AB29002C26AD /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
 		92B15F9E285F55A900B9513C /* Employee Feedback App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Employee Feedback App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		92B15FA1285F55A900B9513C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92B15FA3285F55A900B9513C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +73,8 @@
 			isa = PBXGroup;
 			children = (
 				92871D1F2872C6FD00B3F223 /* NetworkingService.swift */,
+				9297811E28759FC9002C26AD /* LoginService.swift */,
+				929781202875AB29002C26AD /* SignUpService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -216,10 +222,12 @@
 				92B15FA2285F55A900B9513C /* AppDelegate.swift in Sources */,
 				9297811728746B38002C26AD /* ProfileFeedbackTableViewCell.swift in Sources */,
 				929781192874C12E002C26AD /* EmployeeFeedbackTableViewCell.swift in Sources */,
+				929781212875AB29002C26AD /* SignUpService.swift in Sources */,
 				92E43D772869B52300863B65 /* OldFeedbacksViewController.swift in Sources */,
 				9292043428631CB20075DACC /* ProfileFeedbackViewController.swift in Sources */,
 				92B15FA4285F55A900B9513C /* SceneDelegate.swift in Sources */,
 				92B15FD22860A74F00B9513C /* ProfileViewController.swift in Sources */,
+				9297811F28759FC9002C26AD /* LoginService.swift in Sources */,
 				92E43D7B2869BF7200863B65 /* EditProfileViewController.swift in Sources */,
 				92871D202872C6FD00B3F223 /* NetworkingService.swift in Sources */,
 				92B15FCD2860882800B9513C /* LoginViewController.swift in Sources */,

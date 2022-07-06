@@ -1,12 +1,16 @@
 import UIKit
 
-//struct RegisterRequest: Encodable {
-//    let emailAddress: String
-//    let password: String
-//    let firstName: String
-//    let lastName: String
-//    let biography: String
-//}
+struct SignUpRequest: Encodable {
+    let emailAddress: String
+    let password: String
+    let firstName: String
+    let lastName: String
+    let biography: String
+}
+
+struct SignUpResponse: Decodable {
+    let token: String
+}
 
 class SignUpViewController: UIViewController {
     
@@ -16,6 +20,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet var emailField: UITextField!
     @IBOutlet var passwordField: UITextField!
     @IBOutlet var repeatPassword: UITextField!
+    @IBOutlet var spinner: UIActivityIndicatorView!
     
     @IBOutlet var signupBtn: UIButton!
     
@@ -23,9 +28,17 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func SignUp(_ sender: Any) {
-        
-        // Validate required fields are not empty
+    func showSpinner() {
+        self.spinner.isHidden = false
+    }
+    
+    func hideSpinner() {
+        DispatchQueue.main.async {
+            self.spinner.isHidden = true
+        }
+    }
+    
+    func isFilled() {
         if (firstNameField.text?.isEmpty)! ||
             (lastNameField.text?.isEmpty)! ||
             (emailField.text?.isEmpty)! ||
@@ -44,20 +57,13 @@ class SignUpViewController: UIViewController {
             displayMessage(userMessage: "Please make sure that passwords match")
             return
         }
+    }
+    
+    @IBAction func SignUp(_ sender: Any) {
         
-        // Create activity indicator
-        let myActivityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
-        
-        // Position Activity Indicator in the center of the main view
-        myActivityIndicator.center = view.center
-        
-        // If needed, you can prevent Acivity Indicator from hiding when stopAnimating() is called
-        myActivityIndicator.hidesWhenStopped = false
-        
-        // Start Activity Indicator
-        myActivityIndicator.startAnimating()
-        
-        view.addSubview(myActivityIndicator)
+        // isFilled
+        //
+        //
         
         // Send HTTP Request to Register user
         var request = URLRequest(url: URL(string: "https://efa-app.ml/mock/register")!)
@@ -97,12 +103,26 @@ class SignUpViewController: UIViewController {
             print("responseString = \(String(describing: responseString))")
             
         }
+        
         task.resume()
         
         print("Sign Up button tapped")
         performSegue(withIdentifier: "SignUpSegue", sender: self)
         
     }
+    
+//    func getSignUpRequest() -> SignUpRequest? {
+//        // Check if required fields are not empty
+//        guard let email = emailField.text,
+//              let password = passwordField.text else {
+//
+//            // Display alert message
+//            print("Email \(String(describing: emailField.text)) or password \(String(describing: passwordField.text)) is empty")
+//            displayMessage(userMessage: "One of the required fields is missing")
+//            return nil
+//        }
+//        return .init(email: email, password: password)
+//    }
     
     func displayMessage(userMessage: String) -> Void { DispatchQueue.main.async {
         
@@ -120,10 +140,4 @@ class SignUpViewController: UIViewController {
         
     }
     
-    func removeActivityIndicator(activityIndicator: UIActivityIndicatorView) {
-        DispatchQueue.main.async {
-            activityIndicator.stopAnimating()
-            activityIndicator.removeFromSuperview()
-        }
-    }
 }

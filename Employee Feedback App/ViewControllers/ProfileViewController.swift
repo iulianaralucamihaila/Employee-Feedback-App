@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet var editProfile: UIButton!
     @IBOutlet var viewFeedbacks: UIButton!
     @IBOutlet var logoutBtn: UITabBarItem!
+
     
     var user = User(emailAdress: "maria@db.com", password: "1234", firstName: "Maria", lastName: "Popescu", resiliance: 4.5, performance: 5, innovation: 3.7, biography: "iOS developper")
     
@@ -24,6 +25,7 @@ class ProfileViewController: UIViewController {
 
     func loadMemberProfile() {
     }
+    
     
     func getUser() {
         firstNameLabel.text = user.firstName

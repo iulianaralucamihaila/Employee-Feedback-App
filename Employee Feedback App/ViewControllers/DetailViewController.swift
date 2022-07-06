@@ -10,6 +10,7 @@ class DetailViewController: UIViewController {
     @IBOutlet var performance: UILabel!
     @IBOutlet var innovation: UILabel!
     @IBOutlet var profilePic: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "\(selectedUser.firstName) \(selectedUser.lastName)"
