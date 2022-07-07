@@ -5,12 +5,12 @@ class ProfileFeedbackViewController: UITableViewController {
     //@IBOutlet var spinner: UIActivityIndicatorView!
     
     
-    var feedback1 = Feedback(userName: "Maria", averageScore: 4.3, comments: "Improve your punctuality")
-    var feedback2 = Feedback(userName: "Florin", averageScore: 5.0, comments: "I appreciate your coordination skill")
-    var feedback3 = Feedback(userName: "Mihai", averageScore: 4.1, comments: "Communicate more with team members!")
-    var feedback4 = Feedback(userName: "Robert", averageScore: 3.0, comments: "I think you should have put in more effort")
-    var feedback5 = Feedback(userName: "Ion", averageScore: 4.7, comments: "I like that you got involved in the project")
-    var feedback6 = Feedback(userName: "Andreea", averageScore: 4.3, comments: "Improve your patience")
+    var feedback1 = Feedback(userName: "Andreea Badea", averageScore: 4.3, comments: "Improve your punctuality")
+    var feedback2 = Feedback(userName: "Wiliam Toader", averageScore: 5.0, comments: "I appreciate your coordination skill")
+    var feedback3 = Feedback(userName: "Ovidiu Ioan", averageScore: 4.1, comments: "Communicate more with team members!")
+    var feedback4 = Feedback(userName: "Alexandra Enache", averageScore: 3.0, comments: "I think you should have put in more effort")
+    var feedback5 = Feedback(userName: "Laurentiu Postole", averageScore: 4.7, comments: "I like that you got involved in the project")
+    var feedback6 = Feedback(userName: "Andreea Balan", averageScore: 4.3, comments: "Improve your patience")
     
     var feedbacks = [Feedback]()
     

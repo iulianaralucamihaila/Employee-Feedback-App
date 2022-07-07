@@ -1,41 +1,54 @@
 import UIKit
 import SwiftKeychainWrapper
 
-struct LoginRequest: Encodable {
-    let email: String
-    let password: String
-}
-
-struct LoginResponse: Decodable {
-    let token: String
-}
-
 class LoginViewController: UIViewController {
-    @IBOutlet var emailField: UITextField!
-    @IBOutlet var passwordField: UITextField!
-    @IBOutlet var signinBtn: UIButton!
-    @IBOutlet var signUpButton: UIButton!
-    @IBOutlet var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var signinBtn: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
+    let service = AuthService()
     
-    let service = LoginService()
-    //var myActivityIndicator = UIActivityIndicatorView()
-    
-    fileprivate func makeLogin() {
-        service.login(loginRequest: getLoginRequest()!) { result in
+    func makeLogin() {
+        guard let loginRequest = getLoginRequest() else {
+            self.hideSpinner()
+            self.displayMessage(userMessage: "One of the required fields is missing")
+            return
+        }
+        
+        service.login(loginRequest: loginRequest) { result in
             switch result {
             case .success(let loginResult):
-                KeychainWrapper.standard.set(loginResult.token, forKey: "accessToken")
-                
-                DispatchQueue.main.async {
-                    let homePage = self.storyboard?.instantiateViewController(withIdentifier: "EmployeeList") as! HomeViewController
-                    let appDelegate = UIApplication.shared.delegate
-                    appDelegate?.window??.rootViewController = homePage
-                }
+                KeychainWrapper.standard.set(loginResult.refreshToken, forKey: "refreshToken")
+                self.setAuth()
             case .failure(let error):
                 self.hideSpinner()
-                self.displayMessage(userMessage: "not successfully")
-                print(error)
+                self.displayMessage(userMessage: "Login not successfull")
+            }
+        }
+    }
+    
+    func setAuth() {
+        guard let accessTokenRequest = getAccessTokenRequest() else {
+            return
+        }
+        
+        service.accessToken(accessTokenRequest: accessTokenRequest) { result in
+            switch result {
+            case .success(let accessTokenResult):
+                KeychainWrapper.standard.set(accessTokenResult.accessToken, forKey: "accessToken")
+                UserDefaults.standard.set(true, forKey: "FirstLoginApp")
+                DispatchQueue.main.async {
+                    self.hideSpinner()
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "TabBar")
+                    let window = UIApplication.shared.windows.first
+                    window?.rootViewController = nextViewController
+                }
+            case.failure(let error):
+                self.hideSpinner()
+                self.displayMessage(userMessage: "Access token retrieval not successfull")
             }
         }
     }
@@ -50,12 +63,11 @@ class LoginViewController: UIViewController {
     
     @IBAction func SignIn(_ sender: Any) {
         showSpinner()
-        sleep(UInt32(1.5))
         self.makeLogin()
     }
     
     func showSpinner() {
-            self.spinner.isHidden = false
+        self.spinner.isHidden = false
     }
     
     func hideSpinner() {
@@ -64,43 +76,30 @@ class LoginViewController: UIViewController {
         }
     }
     
-//    func makeLoginCall() {
-//        // Send HTTP Request to perform Sign in
-//        let task = URLSession.shared.dataTask(with: getULRRequest()) { (data: Data?, response: URLResponse?, error: Error?) in
-//
-//            guard let data = data else {
-//                //self.removeActivityIndicator(activityIndicator: myActivityIndicator)
-//                self.hideSpinner()
-//                self.displayMessage(userMessage: "not successfully")
-//                return
-//            }
-//
-//            do {
-//                let response = try JSONDecoder().decode(LoginResponse.self, from: data)
-//
-//
-//            } catch {
-//            }
-//
-//        }
-//        task.resume()
-//    }
-    
     func getLoginRequest() -> LoginRequest? {
         // Check if required fields are not empty
-        guard let email = emailField.text,
-              let password = passwordField.text else {
-            
-            // Display alert message
-            print("Email \(String(describing: emailField.text)) or password \(String(describing: passwordField.text)) is empty")
-            displayMessage(userMessage: "One of the required fields is missing")
+        guard let email = emailField.text, !email.isEmpty,
+              let password = passwordField.text, !password.isEmpty else {
             return nil
         }
-        return .init(email: email, password: password)
+        return .init(emailAddress: email, password: password)
     }
     
-    func displayMessage(userMessage: String) -> Void { DispatchQueue.main.async {
-        
+    func getAccessTokenRequest() -> AccessTokenRequest? {
+        guard let refreshToken = KeychainWrapper.standard.string(forKey: "refreshToken") else {
+            return nil
+        }
+        return .init(refreshToken: refreshToken)
+    }
+    
+//    func getToken() -> AccessTokenRequest? {
+//        guard let refreshToken = KeychainWrapper.standard.string(forKey: "refreshToken") else {
+//            return nil
+//        }
+//        return .init(refreshToken: refreshToken)
+//    }
+    
+    func displayMessage(userMessage: String) -> Void {
         let alertController = UIAlertController(title: "Alert", message: userMessage, preferredStyle: .alert)
         
         let OKAction = UIAlertAction(title: "OK", style: .default)
@@ -112,6 +111,5 @@ class LoginViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
         }
     }
-}
-
+    
 }

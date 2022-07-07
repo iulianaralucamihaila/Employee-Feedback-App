@@ -9,16 +9,19 @@
 /* Begin PBXBuildFile section */
 		92352264287435B70095A2E6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92352263287435B70095A2E6 /* User.swift */; };
 		923DF99A2864D9E50035D1F6 /* SendFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923DF9992864D9E50035D1F6 /* SendFeedbackViewController.swift */; };
+		9286386E28770095000185B3 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9286386D28770095000185B3 /* ProfileService.swift */; };
+		92863871287700D2000185B3 /* ProfileTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92863870287700D2000185B3 /* ProfileTypes.swift */; };
+		9286387328771767000185B3 /* EmployeeListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9286387228771767000185B3 /* EmployeeListService.swift */; };
+		92863875287717D2000185B3 /* EmployeeListTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92863874287717D2000185B3 /* EmployeeListTypes.swift */; };
 		92871D202872C6FD00B3F223 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92871D1F2872C6FD00B3F223 /* NetworkingService.swift */; };
 		92871D232872E9B700B3F223 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 92871D222872E9B700B3F223 /* SwiftKeychainWrapper */; };
 		9292043428631CB20075DACC /* ProfileFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9292043328631CB20075DACC /* ProfileFeedbackViewController.swift */; };
 		929781142874670C002C26AD /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929781132874670C002C26AD /* Feedback.swift */; };
 		9297811728746B38002C26AD /* ProfileFeedbackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9297811628746B38002C26AD /* ProfileFeedbackTableViewCell.swift */; };
 		929781192874C12E002C26AD /* EmployeeFeedbackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929781182874C12E002C26AD /* EmployeeFeedbackTableViewCell.swift */; };
-		9297811F28759FC9002C26AD /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9297811E28759FC9002C26AD /* LoginService.swift */; };
-		929781212875AB29002C26AD /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929781202875AB29002C26AD /* SignUpService.swift */; };
+		9297811F28759FC9002C26AD /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9297811E28759FC9002C26AD /* AuthService.swift */; };
+		929781232875C339002C26AD /* AuthTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929781222875C339002C26AD /* AuthTypes.swift */; };
 		92B15FA2285F55A900B9513C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B15FA1285F55A900B9513C /* AppDelegate.swift */; };
-		92B15FA4285F55A900B9513C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B15FA3285F55A900B9513C /* SceneDelegate.swift */; };
 		92B15FA6285F55A900B9513C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B15FA5285F55A900B9513C /* HomeViewController.swift */; };
 		92B15FA9285F55A900B9513C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92B15FA7285F55A900B9513C /* Main.storyboard */; };
 		92B15FAB285F55AB00B9513C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92B15FAA285F55AB00B9513C /* Assets.xcassets */; };
@@ -34,16 +37,19 @@
 /* Begin PBXFileReference section */
 		92352263287435B70095A2E6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		923DF9992864D9E50035D1F6 /* SendFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendFeedbackViewController.swift; sourceTree = "<group>"; };
+		9286386D28770095000185B3 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
+		92863870287700D2000185B3 /* ProfileTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTypes.swift; sourceTree = "<group>"; };
+		9286387228771767000185B3 /* EmployeeListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListService.swift; sourceTree = "<group>"; };
+		92863874287717D2000185B3 /* EmployeeListTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListTypes.swift; sourceTree = "<group>"; };
 		92871D1F2872C6FD00B3F223 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		9292043328631CB20075DACC /* ProfileFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFeedbackViewController.swift; sourceTree = "<group>"; };
 		929781132874670C002C26AD /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		9297811628746B38002C26AD /* ProfileFeedbackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFeedbackTableViewCell.swift; sourceTree = "<group>"; };
 		929781182874C12E002C26AD /* EmployeeFeedbackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeFeedbackTableViewCell.swift; sourceTree = "<group>"; };
-		9297811E28759FC9002C26AD /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
-		929781202875AB29002C26AD /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
+		9297811E28759FC9002C26AD /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		929781222875C339002C26AD /* AuthTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTypes.swift; sourceTree = "<group>"; };
 		92B15F9E285F55A900B9513C /* Employee Feedback App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Employee Feedback App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		92B15FA1285F55A900B9513C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		92B15FA3285F55A900B9513C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		92B15FA5285F55A900B9513C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		92B15FA8285F55A900B9513C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		92B15FAA285F55AB00B9513C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -69,12 +75,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9286386F287700B6000185B3 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				929781222875C339002C26AD /* AuthTypes.swift */,
+				92863870287700D2000185B3 /* ProfileTypes.swift */,
+				92863874287717D2000185B3 /* EmployeeListTypes.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
 		9288E29B286DC5EB009B8F2B /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				92871D1F2872C6FD00B3F223 /* NetworkingService.swift */,
-				9297811E28759FC9002C26AD /* LoginService.swift */,
-				929781202875AB29002C26AD /* SignUpService.swift */,
+				9297811E28759FC9002C26AD /* AuthService.swift */,
+				9286386D28770095000185B3 /* ProfileService.swift */,
+				9286387228771767000185B3 /* EmployeeListService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -107,10 +124,10 @@
 		92B15FA0285F55A900B9513C /* Employee Feedback App */ = {
 			isa = PBXGroup;
 			children = (
+				9286386F287700B6000185B3 /* Types */,
 				9288E29B286DC5EB009B8F2B /* Services */,
 				92B15FD0286098F800B9513C /* ViewControllers */,
 				92B15FA1285F55A900B9513C /* AppDelegate.swift */,
-				92B15FA3285F55A900B9513C /* SceneDelegate.swift */,
 				92B15FA7285F55A900B9513C /* Main.storyboard */,
 				92B15FAA285F55AB00B9513C /* Assets.xcassets */,
 				92B15FAC285F55AB00B9513C /* LaunchScreen.storyboard */,
@@ -220,19 +237,22 @@
 				923DF99A2864D9E50035D1F6 /* SendFeedbackViewController.swift in Sources */,
 				92B15FA6285F55A900B9513C /* HomeViewController.swift in Sources */,
 				92B15FA2285F55A900B9513C /* AppDelegate.swift in Sources */,
+				9286387328771767000185B3 /* EmployeeListService.swift in Sources */,
 				9297811728746B38002C26AD /* ProfileFeedbackTableViewCell.swift in Sources */,
+				92863875287717D2000185B3 /* EmployeeListTypes.swift in Sources */,
 				929781192874C12E002C26AD /* EmployeeFeedbackTableViewCell.swift in Sources */,
-				929781212875AB29002C26AD /* SignUpService.swift in Sources */,
 				92E43D772869B52300863B65 /* OldFeedbacksViewController.swift in Sources */,
 				9292043428631CB20075DACC /* ProfileFeedbackViewController.swift in Sources */,
-				92B15FA4285F55A900B9513C /* SceneDelegate.swift in Sources */,
 				92B15FD22860A74F00B9513C /* ProfileViewController.swift in Sources */,
-				9297811F28759FC9002C26AD /* LoginService.swift in Sources */,
+				9297811F28759FC9002C26AD /* AuthService.swift in Sources */,
 				92E43D7B2869BF7200863B65 /* EditProfileViewController.swift in Sources */,
+				929781232875C339002C26AD /* AuthTypes.swift in Sources */,
+				9286386E28770095000185B3 /* ProfileService.swift in Sources */,
 				92871D202872C6FD00B3F223 /* NetworkingService.swift in Sources */,
 				92B15FCD2860882800B9513C /* LoginViewController.swift in Sources */,
 				929781142874670C002C26AD /* Feedback.swift in Sources */,
 				92B15FCB2860537B00B9513C /* DetailViewController.swift in Sources */,
+				92863871287700D2000185B3 /* ProfileTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,9 +401,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Employee Feedback App/Info.plist";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We need to save photos you like.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -408,9 +428,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Employee Feedback App/Info.plist";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We need to save photos you like.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

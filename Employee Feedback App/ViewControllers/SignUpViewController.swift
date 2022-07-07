@@ -1,4 +1,5 @@
 import UIKit
+import SwiftKeychainWrapper
 
 struct SignUpRequest: Encodable {
     let emailAddress: String
@@ -59,70 +60,76 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    @IBAction func SignUp(_ sender: Any) {
-        
-        // isFilled
-        //
-        //
-        
-        // Send HTTP Request to Register user
-        var request = URLRequest(url: URL(string: "https://efa-app.ml/mock/register")!)
-        request.httpMethod = "POST"
-        
-        request.allHTTPHeaderFields = ["Content-Type": "multipart/formdata"]
-        request.allHTTPHeaderFields = ["accept": "application/json"]
-        
-        let registerRequest = ["data": ["emailAddress": emailField.text!,
-                                        "password": passwordField.text!,
-                                        "firstName": firstNameField.text!,
-                                        "lastName": lastNameField.text!, "biography": biographyField.text!]]
-        
-        //                let jsonEncoder = JSONEncoder()
-        //                request.httpBody = try? jsonEncoder.encode(registerRequest)
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: registerRequest, options: .prettyPrinted)
-        } catch let error {
-            print(error.localizedDescription)
-            displayMessage(userMessage: "Something went wrong. Try again")
+    let service = AuthService()
+    
+    func makeRegister() {
+        guard let registerRequest = getRegisterRequest() else {
+            self.hideSpinner()
+            self.displayMessage(userMessage: "One of the required fields is missing")
             return
         }
         
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            
-            //            self.removeActivityIndicator(activityIndicator: myActivityIndicator)
-            guard let data = data, error == nil else {
-                print("error=\(String(describing: error))")
-                return
+        service.register(registerRequest: registerRequest) { result in
+            switch result {
+            case .success(let loginResult):
+                KeychainWrapper.standard.set(loginResult.refreshToken, forKey: "refreshToken")
+                self.setAuth()
+            case .failure(let error):
+                self.hideSpinner()
+                self.displayMessage(userMessage: "Register not successfull")
             }
-            
-            let httpStatus = response as? HTTPURLResponse
-            print("statusCode should be 200, but is \(httpStatus!.statusCode)")
-            print("response = \(String(describing: response))")
-            
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(String(describing: responseString))")
-            
         }
-        
-        task.resume()
-        
-        print("Sign Up button tapped")
-        performSegue(withIdentifier: "SignUpSegue", sender: self)
-        
     }
     
-//    func getSignUpRequest() -> SignUpRequest? {
-//        // Check if required fields are not empty
-//        guard let email = emailField.text,
-//              let password = passwordField.text else {
-//
-//            // Display alert message
-//            print("Email \(String(describing: emailField.text)) or password \(String(describing: passwordField.text)) is empty")
-//            displayMessage(userMessage: "One of the required fields is missing")
-//            return nil
-//        }
-//        return .init(email: email, password: password)
-//    }
+    func setAuth() {
+        guard let accessTokenRequest = getAccessTokenRequest() else {
+            return
+        }
+        
+        service.accessToken(accessTokenRequest: accessTokenRequest) { result in
+            switch result {
+            case .success(let accessTokenResult):
+                KeychainWrapper.standard.set(accessTokenResult.accessToken, forKey: "accessToken")
+                UserDefaults.standard.set(true, forKey: "FirstLoginApp")
+                DispatchQueue.main.async {
+                    self.hideSpinner()
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "TabBar")
+                    let window = UIApplication.shared.windows.first
+                    window?.rootViewController = nextViewController
+                }
+            case.failure(let error):
+                self.hideSpinner()
+                self.displayMessage(userMessage: "Access token retrieval not successfull")
+            }
+        }
+    }
+    
+    @IBAction func SignUp(_ sender: Any) {
+        makeRegister()
+    }
+    
+    func getRegisterRequest() -> RegisterRequest? {
+        // Check if required fields are not empty
+        guard let email = emailField.text, !email.isEmpty,
+              let password = passwordField.text, !password.isEmpty,
+              let biography = biographyField.text, !biography.isEmpty,
+              let firstName = firstNameField.text, !firstName.isEmpty,
+              let lastName = lastNameField.text, !lastName.isEmpty,
+              let repeatPasswordString = repeatPassword.text, !repeatPasswordString.isEmpty && repeatPasswordString == password
+        else {
+            return nil
+        }
+        return .init(biography: biography, emailAddress: email, firstName: firstName, lastName: lastName, password: password)
+    }
+    
+    func getAccessTokenRequest() -> AccessTokenRequest? {
+        guard let refreshToken = KeychainWrapper.standard.string(forKey: "refreshToken") else {
+            return nil
+        }
+        return .init(refreshToken: refreshToken)
+    }
+    
     
     func displayMessage(userMessage: String) -> Void { DispatchQueue.main.async {
         

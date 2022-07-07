@@ -1,7 +1,7 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    var selectedUser: User!
+    var selectedUser: Int32!
     
     @IBOutlet var viewOldFeedbacks: UIButton!
     @IBOutlet var addFeedback: UIButton!
@@ -13,14 +13,25 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "\(selectedUser.firstName) \(selectedUser.lastName)"
-        getUser()
+//
+        getUsers()
     }
+    var profileService = ProfileService()
     
-    func getUser() {
-        resiliance.text = String(selectedUser.resiliance)
-        performance.text = String(selectedUser.performance)
-        innovation.text = String(selectedUser.innovation)
-        biography.text = selectedUser.biography
+    func getUsers() {
+        profileService.getProfileByID(id: selectedUser) { result in
+            switch result {
+            case .success(let profileResponse):
+                DispatchQueue.main.async {
+                    self.title = "\(profileResponse.firstName) \(profileResponse.lastName)"
+                    self.resiliance.text = String(profileResponse.score1)
+                    self.performance.text = String(profileResponse.score2)
+                    self.innovation.text = String(profileResponse.score3)
+                    self.biography.text = profileResponse.biography
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }

@@ -3,76 +3,58 @@ import UIKit
 class HomeViewController: UITableViewController, UISearchBarDelegate {
     
     var user1 = User(emailAdress: "maria@db.com", password: "1234", firstName: "Anca", lastName: "Ionescu", resiliance: 4.5, performance: 5, innovation: 4.7, biography: "Full-stack Developper")
-    
+
     var user2 = User(emailAdress: "sebastian@db.com", password: "1234", firstName: "Sebastian", lastName: "Dumitrescu", resiliance: 3.7, performance: 4, innovation: 4.2, biography: "Junior Java Developper")
-    
+
     var user3 = User(emailAdress: "alexandra@db.com", password: "1234", firstName: "Alexandra", lastName: "Badea", resiliance: 5, performance: 5, innovation: 4.5, biography: "Phyton Developper")
-    
+
     var user4 = User(emailAdress: "anton@db.com", password: "1234", firstName: "Anton", lastName: "Stan", resiliance: 3.8, performance: 5, innovation: 4.7, biography: "PHP Developper")
-    
+
     var user5 = User(emailAdress: "cosmin@db.com", password: "1234", firstName: "Cosmin", lastName: "Andone", resiliance: 4.8, performance: 4.8, innovation: 4.1, biography: ".NET Developper")
-    
+
     var user6 = User(emailAdress: "nicoleta@db.com", password: "1234", firstName: "Nicoleta", lastName: "Tudose", resiliance: 3.5, performance: 3, innovation: 3, biography: "Junior Phyton Developper")
     
-    var users = [User]()
+    var users = [EmployeeListResponse]()
     var usersFullName = [String]()
+    var filtredUsers = [String]()
     
-    func createUsers() {
-        users = [user1, user2, user3, user4, user5, user6]
-        for i in 0 ..< users.count {
-            usersFullName.append(users[i].firstName + " " + users[i].lastName)
+    var employeeService = EmployeeListService()
+    
+    func getUsers() {
+        employeeService.getEmployeeList { result in
+            switch result {
+            case .success(let employeeResponse):
+                DispatchQueue.main.async {
+                    self.users = employeeResponse
+                    for i in 0 ..< employeeResponse.count {
+                        self.usersFullName.append(employeeResponse[i].firstName + " " + employeeResponse[i].lastName)
+                    }
+                    print(employeeResponse)
+                    print(employeeResponse.count)
+                    print(self.usersFullName)
+                    self.filtredUsers = self.usersFullName
+                    self.profileTableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
         }
     }
     
-    //fara !
-    var filtredUsers: [String]!
-    
-    var fetchedProfiles: [String]!
     
     @IBOutlet var profileTableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = "Employee List"
         
         profileTableView.dataSource = self
-        createUsers()
+        getUsers()
+        print(self.usersFullName)
         filtredUsers = usersFullName
     }
     
-    //url
-    func parseData() {
-        fetchedProfiles = []
-        
-        var request = URLRequest(url: URL(string: "https://efa-app.ml/mock/profiles")!)
-        request.httpMethod = "GET"
-        request.allHTTPHeaderFields = ["Accept": "application/json"]
-        //request.allHTTPHeaderFields = []
-        //request.setValue(<#T##value: String?##String?#>, forHTTPHeaderField: <#T##String#>)
-        
-        let task = URLSession.shared.dataTask(with: request) {
-            data, response, error in
-            if let error = error {
-                print("error: \(error.localizedDescription)")
-            } else {
-                let jsonRes = try? JSONSerialization.jsonObject(with: data!, options: [])
-                
-                for eachFetchedProfiles in self.fetchedProfiles {
-                    let eachProfiles = eachFetchedProfiles as! [String : Any]
-                    let title = eachProfiles["title"] as! String
-                    // let body = eachProfiles["body"] as! String
-                    
-                    self.fetchedProfiles.append(title)
-                }
-                DispatchQueue.main.async {
-                    self.profileTableView.reloadData()
-                }
-                print(jsonRes)
-            }
-        }.resume()
-    }
     
     // Table
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -91,7 +73,7 @@ class HomeViewController: UITableViewController, UISearchBarDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-            vc.selectedUser = users[indexPath.row]
+            vc.selectedUser = users[indexPath.row].apiUserId
             navigationController?.pushViewController(vc, animated: true)
         }
     }
